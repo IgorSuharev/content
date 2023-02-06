@@ -99,13 +99,16 @@ updateVegetablesCollection(veggies, "spinach");
 // spinach already exists in the veggies collection.
 ```
 
-### Using indexOf() on sparse arrays
+### Using indexOf() for searching holes or NaN
 
-You cannot use `indexOf()` to search for empty slots in sparse arrays.
+You cannot use `indexOf()` to search for empty slots in sparse arrays, as well as for NaN values.
 
 ```js
-console.log([1, , 3].indexOf(undefined)); // -1
+const arr = [1, , 3, NaN];
+console.log(arr.indexOf(undefined)); // -1
+console.log(arr.indexOf(NaN)); // -1
 ```
+The reason is that `indexOf()` uses strict equality.
 
 ### Calling indexOf() on non-array objects
 
